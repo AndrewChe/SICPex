@@ -20,4 +20,5 @@
                       x)))
 
 (sqrt-iter 1.0 16)
-;; new-if doesn't works, program never ends, because new-if uses normal order evaluation
+;; new-if doesn't works, program never ends, because new-if uses applicative order evaluation
+;; if keyword will evaluates only needed params and it works good
