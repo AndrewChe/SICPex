@@ -15,8 +15,10 @@
                       x)))
 
 (define (cube-root x)
-  (if (= x 0) 0
-      (cube-root-iter 1.0 x)))
+  (cond ((< (abs x) 1e-100) 0)
+        ((eqv? x +inf.0) +inf.0)
+        ((eqv? x -inf.0) -inf.0)
+      (else (cube-root-iter 1.0 x))))
 
 (cube -3)
 (cube-root -27)
