@@ -1,3 +1,4 @@
+#lang scheme
 (define (inc x)
   (+ x 1))
 
@@ -14,6 +15,15 @@
 ;; This is recursive process because it's expands 
 ;;and then narrows and all evaluations are stored in memory
 
+  (recur-plus 3 3)
+  (inc (recur-plus 2 3))
+  (inc (inc (recur-plus 1 3)))
+  (inc (inc (inc (recur-plus 0 3))))
+  (inc (inc (inc 3)))
+  (inc (inc 4))
+  (inc 5)
+  6
+
 (define (iter-plus a b)
   (define (plus a b)
     (if (= a 0)
@@ -24,9 +34,15 @@
 ;; This is iterative process because each step knows all to continue evaluation
 ;; and it needs fixed value of memory
 
-(iter-plus -3 5)
-(recur-plus -4 2)
+  (iter-plus 3 3)
+  (iter-plus 2 4)
+  (iter-plus 1 5)
+  (iter-plus 0 6)
+  6
+
+;(iter-plus -3 5)
+;(recur-plus -4 2)
 ;; With large arguments it's appears as stopping evaluation in recursive way
 ;; because of memory loading (on my computer with following arguments)
-(iter-plus 5e+6 6e+6)
-(recur-plus 5e+6 6e+6)
+;(iter-plus 5e+6 6e+6)
+;(recur-plus 5e+6 6e+6)
